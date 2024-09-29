@@ -41,19 +41,34 @@ class Resultscreen extends StatelessWidget {
               ),
             ),
             for (var i = 0; i < userAnser.length; i++)
-              Row(
-                children: [
-                  Text("${i+1}"),
-                  Column(
+              Card(
+                child: ListTile(
+                  leading: CircleAvatar(
+                    child: Text(
+                      (i + 1).toString(),
+                    ),
+                  ),
+                  title: Text(
+                    questionList[i].question,
+                  ),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(questionList[i].question),
-                      Text(questionList[i].answer[0]),
-                      Text(questionList[i].correct)
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: 10,
+                        ),
+                        child: Text(questionList[i].correct),
+                      ),
+                      Text(userAnser[i]),
                     ],
-                  )
-                ],
+                  ),
+                ),
               ),
-            HomeButton(homeButton),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: HomeButton(homeButton),
+            ),
           ],
         ),
       ),
